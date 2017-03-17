@@ -8,7 +8,7 @@
 				func: function(args) {
 					return 2
 				}
-			}
+			},
 			],
 
 		generate : function (args) {
@@ -34,12 +34,29 @@
 
 		messages : [{
 			text : 'Stay classy, $city',
-			needs : ['city'],
+			needs : ['city']
 		},
 		{
 			text : 'Welcome back, $name',
 			needs : ['name']
-		}],
+		},
+		{
+			text : 'The best Adwords work is less Adwords work',
+			needs : []
+		},
+		{
+			text : 'No more #badwords',
+			needs : []
+		},
+		{
+			text : 'Making Adwords great again since 2015',
+			needs : []
+		},
+		{
+			text : 'Making Adwords great again since 2015',
+			needs : []
+		},
+		],
 
 		getAllData : function () {
 			return Promise.all([
