@@ -68,6 +68,10 @@
 			text : 'You had me at hello world',
 			needs : []
 		},
+		{
+			text : 'Ahoy Matey! Welcome to the Adwords ship',
+			needs : []
+		},
 		],
 
 		getAllData : function () {
