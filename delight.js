@@ -17,7 +17,9 @@
 
 			return this.getDefaultData().then(function(default_data) {
 				
-				console.log(default_data)
+				var rand_message = Math.random(0, _this.messages.length)
+
+				console.log(rand_message)
 
 				// var city = available_data[0]
 				// var valid_messages = this.messages.filter(function (message) {
@@ -41,7 +43,7 @@
 			needs : ['name']
 		}],
 
-		getAllData : function () {
+		getDefaultData : function () {
 			return Promise.all([
 				// getCity(),
 				// getName()
