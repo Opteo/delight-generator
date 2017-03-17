@@ -6,8 +6,15 @@
                 variable: '$city',
                 func: function(args) {
                 	return new Promise(function(resolve, reject) {
-                		resolve('London')
-                	})
+                		var xhttp = new XMLHttpRequest()
+                        xhttp.onreadystatechange = function() {
+                            if (this.readyState == 4 && this.status == 200) {
+                                resolve(JSON.parse(this.responseText).city)
+                            }
+                        }
+                        xhttp.open("GET", 'http://ip-api.com/json', true)
+                        xhttp.send()
+                    })
                 }
             }, {
                 variable: '$joke',
