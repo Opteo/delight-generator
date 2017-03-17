@@ -9,8 +9,9 @@
 
 		<script>
 			delight.generate({
-				email : 'axel@opteo.com'
-			}, function (message) {
+				email : 'axel@opteo.com',
+				name : 'Axel'
+			}).then(function (message) {
 				document.getElementById('message').innerHTML = message
 			})
 		</script>
