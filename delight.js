@@ -72,6 +72,10 @@
 			text : 'Ahoy Matey! Welcome to the Adwords ship',
 			needs : []
 		},
+		{
+			text : 'Optimizing Adwords CPAs since 2015',
+			needs : []
+		},
 		],
 
 		getAllData : function () {
