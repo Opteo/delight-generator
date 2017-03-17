@@ -24,7 +24,7 @@
 
 				
 
-				return 'Loic is a very silly man'
+				return 'Loïc is a very silly man'
 			})
 		},
 		messages : [{
