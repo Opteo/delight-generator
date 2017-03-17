@@ -92,35 +92,35 @@
 			needs : []
 		},
 		{
-			text : 'No more #badwords',
+			text : 'No more #badwords :no_good_tone3:',
 			needs : []
 		},
 		{
-			text : 'Making Adwords great again since 2015',
+			text : 'Making Adwords great again since 2015 :statue_of_liberty:',
 			needs : []
 		},
 		{
-			text : 'To infinity and beyond!',
+			text : 'To infinity and beyond! :rocket:',
 			needs : []
 		},
 		{
-			text : 'May the Quality Scores be with you.',
+			text : 'May the Quality Scores be with you :alien:',
 			needs : []
 		},
 		{
-			text : 'What is this [emoji] Payperclip Marketing [emoji]?',
+			text : 'What is this :paperclip: Payperclip Marketing :paperclip:?',
 			needs : []
 		},
 		{
-			text : 'You had me at hello world',
+			text : 'You had me at hello world :wave::earth_americas: ',
 			needs : []
 		},
 		{
-			text : 'Ahoy Matey! Welcome to the Adwords ship',
+			text : 'Ahoy Matey! Welcome to Adwords Island :island:',
 			needs : []
 		},
 		{
-			text : 'Optimizing Adwords CPAs since 2015',
+			text : 'Optimizing Adwords CPAs :robot: since 2015',
 			needs : []
 		},
 		],
