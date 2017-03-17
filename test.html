@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<script src="delight.js"></script>
+	</head>
+
+	<body>
+		<p id="message"></p>
+
+
+		<script>
+			delight.generate({
+				email : 'axel@opteo.com'
+			}, function (message) {
+				document.getElementById('message').innerHTML = message
+			})
+		</script>
+	</body>
+</html>
