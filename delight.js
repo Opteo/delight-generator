@@ -74,31 +74,51 @@
             })
         },
 
-        messages: [{
-            text: 'Stay classy, $city',
-            needs: ['city']
-        }, {
-            text: 'Welcome back, $name',
-            needs: []
-        }, {
-            text: "$joke",
-            needs: ["joke"],
-        }, {
-            text: 'The best Adwords work is less Adwords work',
-            needs: []
-        }, {
-            text: 'No more #badwords',
-            needs: []
-        }, {
-            text: 'Making Adwords great again since 2015',
-            needs: []
-        }, {
-            text: 'Making Adwords great again since 2015',
-            needs: []
-        }, {
-            text: 'I went to $country, it\'s shit.',
-            needs: ['country']
-        }, ],
+		messages : [{
+			text : 'Stay classy, $city',
+			needs : ['city']
+		},
+		{
+			text : 'Welcome back, $name',
+			needs : ['name']
+		},
+		{
+			text : 'The best Adwords work is less Adwords work',
+			needs : []
+		},
+		{
+			text : 'No more #badwords',
+			needs : []
+		},
+		{
+			text : 'Making Adwords great again since 2015',
+			needs : []
+		},
+		{
+			text : 'To infinity and beyond!',
+			needs : []
+		},
+		{
+			text : 'May the Quality Scores be with you. [yoda emoji]',
+			needs : []
+		},
+		{
+			text : 'What is this [emoji] Payperclip Marketing [emoji]?',
+			needs : []
+		},
+		{
+			text : 'You had me at hello world',
+			needs : []
+		},
+		{
+			text : 'Ahoy Matey! Welcome to the Adwords ship',
+			needs : []
+		},
+		{
+			text : 'Optimizing Adwords CPAs since 2015',
+			needs : []
+		},
+		],
 
         getDefaultData: function() {
             return Promise.all([
