@@ -5,30 +5,46 @@
 		variables : [
 			{
 				variable: '$city',
-				func: function(args) {
-					return 2
+				func: function (args) {
+					
+				}
+			},
+			{
+				variable : '$joke',
+				func: function (args) {
+					this.apiGet('http://api.icndb.com/jokes/random')
+
+				.then(function(res) {
+					return(res.value.joke)
+				})
+
 				}
 			}
+
 			],
 
 		generate : function (args) {
 			window.delightful_vars = args
 			var _this = this
 
-			return this.getDefaultData().then(function(default_data) {
+			return _this.getDefaultData().then(function(default_data) {
 				
-				console.log(default_data)
+				// console.log(default_data)
+
+				return _this.variables[1].func()
 
 				// var city = available_data[0]
 				// var valid_messages = this.messages.filter(function (message) {
 					// return //return if we have a all of sentence.needs in our api results
 				// })
 				// _this.apiGet('http://ip-api.com/json')
+				// _this.apiGet('http://api.icndb.com/jokes/random')
+
 				// .then(function(res) {
-				// 	console.log(res)
+				// 	return(res)
 				// })
 
-				return 'Loïc is a very silly man'
+				// return 'Loïc is a very silly man'
 			})
 		},
 
@@ -39,9 +55,14 @@
 		{
 			text : 'Welcome back, $name',
 			needs : ['name']
-		}],
+		},
+		{
+			text : "$joke",
+			needs : ["joke"],
+		}
+		],
 
-		getAllData : function () {
+		getDefaultData : function () {
 			return Promise.all([
 				// getCity(),
 				// getName()
@@ -59,7 +80,9 @@
 				xhttp.open("GET", url, true)
 				xhttp.send()
 			})
-		}
+		},
+
+		
 
 	}
 
