@@ -58,19 +58,20 @@
             window.delightful_vars = args
             var _this = this
 
-            return _this.getDefaultData().then(function(default_data) {
+            return new Promise(function(resolve, reject) {
+                return _this.getDefaultData().then(function(default_data) {
 
-				var rand_message = _this.messages[Math.floor(Math.random() * _this.messages.length)]
+                    var rand_message = _this.messages[Math.floor(Math.random() * _this.messages.length)]
 
-				if(rand_message.needs.length > 0) {
-					return _this.variables.find(row => row.variable === '$' + rand_message.needs[0]).func()
-					.then(function(rendered_var) {
-						console.log(rendered_var)
-						rand_message.text = rand_message.text.replace('$' + rand_message.needs[0], rendered_var)
-						return rand_message.text 
-					})
-				}
-				return rand_message.text
+                    if(rand_message.needs.length > 0) {
+                        return _this.variables.find(row => row.variable === '$' + rand_message.needs[0]).func()
+                        .then(function(rendered_var) {
+                            rand_message.text = rand_message.text.replace('$' + rand_message.needs[0], rendered_var)
+                            resolve(rand_message.text)
+                        })
+                    }
+                    resolve(rand_message.text)
+                })
             })
         },
 
@@ -80,7 +81,11 @@
 		},
 		{
 			text : 'Welcome back, $name',
-			needs : ['name']
+			needs : []
+		},
+		{
+			text : '$joke',
+			needs : ['joke']
 		},
 		{
 			text : 'The best Adwords work is less Adwords work',
@@ -99,7 +104,7 @@
 			needs : []
 		},
 		{
-			text : 'May the Quality Scores be with you. [yoda emoji]',
+			text : 'May the Quality Scores be with you.',
 			needs : []
 		},
 		{

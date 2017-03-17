@@ -1,5 +1,7 @@
 <html>
 	<head>
+		<script src="https://cdn.jsdelivr.net/emojione/2.2.7/lib/js/emojione.min.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/emojione/2.2.7/assets/css/emojione.min.css"/>
 		<script src="delight.js"></script>
 	</head>
 
@@ -13,6 +15,10 @@
 				names : ['Ahrmel', 'Aquel', 'Aguel', 'Alex', 'Nerd', 'ÇAVACRAMEZ', 'Carrot']
 			}).then(function (message) {
 				document.getElementById('message').innerHTML = message
+			}).then(function() {
+				var input = document.getElementById('message').innerHTML
+				var output = emojione.shortnameToImage(input)
+				document.getElementById('message').innerHTML = output
 			})
 		</script>
 	</body>
