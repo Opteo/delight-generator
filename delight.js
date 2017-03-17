@@ -6,7 +6,9 @@
 			{
 				variable: '$city',
 				func: function(args) {
-					return 2
+					return new Promise(function(resolve, reject) {
+						return resolve('London')
+					})
 				}
 			},
 			],
@@ -17,20 +19,17 @@
 
 			return this.getDefaultData().then(function(default_data) {
 				
-				var rand_message = Math.random(0, _this.messages.length)
+				var rand_message = _this.messages[Math.floor(Math.random() * _this.messages.length)]
 
-				console.log(rand_message)
+				if(rand_message.needs.length > 0) {
+					return _this.variables.find(row => row.variable === '$' + rand_message.needs[0]).func()
+					.then(function(rendered_var) {
+						rand_message.text = rand_message.text.replace('$' + rand_message.needs[0], rendered_var)
+						return rand_message.text 
+					})
+				}
+				return rand_message.text
 
-				// var city = available_data[0]
-				// var valid_messages = this.messages.filter(function (message) {
-					// return //return if we have a all of sentence.needs in our api results
-				// })
-				// _this.apiGet('http://ip-api.com/json')
-				// .then(function(res) {
-				// 	console.log(res)
-				// })
-
-				return 'Loïc is a very silly man'
 			})
 		},
 
@@ -40,7 +39,7 @@
 		},
 		{
 			text : 'Welcome back, $name',
-			needs : ['name']
+			needs : []
 		},
 		{
 			text : 'The best Adwords work is less Adwords work',
