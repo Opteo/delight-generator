@@ -53,7 +53,19 @@
 			needs : []
 		},
 		{
-			text : 'Making Adwords great again since 2015',
+			text : 'To infinity and beyond!',
+			needs : []
+		},
+		{
+			text : 'May the Quality Scores be with you. [yoda emoji]',
+			needs : []
+		},
+		{
+			text : 'What is this [emoji] Payperclip Marketing [emoji]?',
+			needs : []
+		},
+		{
+			text : 'You had me at hello world',
 			needs : []
 		},
 		],
