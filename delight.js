@@ -1,36 +1,57 @@
-;(function(){
-	window.delightful_vars = {}
-	window.delight = {
-		
-		variables : [
-			{
-				variable: '$city',
-				func: function(args) {
-					return 2
+;(function() {
+    window.delightful_vars = {}
+    window.delight = {
+
+        variables: [{
+                variable: '$city',
+                func: function(args) {
+                	return new Promise(function(resolve, reject) {
+                		resolve('London')
+                	})
+                }
+            }, {
+                variable: '$joke',
+                func: function(args) {
+                    // this.apiGet('http://api.icndb.com/jokes/random')
+
+                    // .then(function(res) {
+                    //     return (res.value.joke)
+                    // })
+                    return new Promise(function(resolve, reject) {
+                        var xhttp = new XMLHttpRequest()
+                        xhttp.onreadystatechange = function() {
+                            if (this.readyState == 4 && this.status == 200) {
+                                resolve(JSON.parse(this.responseText).value.joke)
+                            }
+                        }
+                        xhttp.open("GET", 'http://api.icndb.com/jokes/random', true)
+                        xhttp.send()
+                    })
+
+                }
+            }
+
+        ],
+
+        generate: function(args) {
+            window.delightful_vars = args
+            var _this = this
+
+            return _this.getDefaultData().then(function(default_data) {
+
+				var rand_message = _this.messages[Math.floor(Math.random() * _this.messages.length)]
+
+				if(rand_message.needs.length > 0) {
+					return _this.variables.find(row => row.variable === '$' + rand_message.needs[0]).func()
+					.then(function(rendered_var) {
+						console.log(rendered_var)
+						rand_message.text = rand_message.text.replace('$' + rand_message.needs[0], rendered_var)
+						return rand_message.text 
+					})
 				}
-			},
-			],
-
-		generate : function (args) {
-			window.delightful_vars = args
-			var _this = this
-
-			return this.getDefaultData().then(function(default_data) {
-				
-				console.log(default_data)
-
-				// var city = available_data[0]
-				// var valid_messages = this.messages.filter(function (message) {
-					// return //return if we have a all of sentence.needs in our api results
-				// })
-				// _this.apiGet('http://ip-api.com/json')
-				// .then(function(res) {
-				// 	console.log(res)
-				// })
-
-				return 'Loïc is a very silly man'
-			})
-		},
+				return rand_message.text
+            })
+        },
 
 		messages : [{
 			text : 'Stay classy, $city',
@@ -78,26 +99,27 @@
 		},
 		],
 
-		getAllData : function () {
-			return Promise.all([
-				// getCity(),
-				// getName()
-			])
-		},
+        getDefaultData: function() {
+            return Promise.all([
+                // getCity(),
+                // getName()
+            ])
+        },
 
-		apiGet : function(url) {
-			return new Promise(function(resolve, reject) {
-				var xhttp = new XMLHttpRequest()
-				xhttp.onreadystatechange = function() {
-					if(this.readyState == 4 && this.status == 200) {
-						resolve(JSON.parse(this.responseText))
-					}
-				}
-				xhttp.open("GET", url, true)
-				xhttp.send()
-			})
-		}
+        apiGet: function(url) {
+            return new Promise(function(resolve, reject) {
+                var xhttp = new XMLHttpRequest()
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        resolve(JSON.parse(this.responseText))
+                    }
+                }
+                xhttp.open("GET", url, true)
+                xhttp.send()
+            })
+        },
 
-	}
 
+
+    }
 }())
