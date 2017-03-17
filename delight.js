@@ -17,6 +17,20 @@
                     })
                 }
             }, {
+                variable: '$country',
+                func: function(args) {
+                	return new Promise(function(resolve, reject) {
+                		var xhttp = new XMLHttpRequest()
+                        xhttp.onreadystatechange = function() {
+                            if (this.readyState == 4 && this.status == 200) {
+                                resolve(JSON.parse(this.responseText).country)
+                            }
+                        }
+                        xhttp.open("GET", 'http://ip-api.com/json', true)
+                        xhttp.send()
+                    })
+                }
+            }, {
                 variable: '$joke',
                 func: function(args) {
                     // this.apiGet('http://api.icndb.com/jokes/random')
@@ -81,6 +95,9 @@
         }, {
             text: 'Making Adwords great again since 2015',
             needs: []
+        }, {
+            text: 'I went to $country, it\'s shit.',
+            needs: ['country']
         }, ],
 
         getDefaultData: function() {
